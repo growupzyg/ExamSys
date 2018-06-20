@@ -7,7 +7,7 @@ new Vue({
     ready:function(){
         var self = this;
         $.ajax({
-            url: '/HelloSSM/rest/user/',
+            url: '/ExamSys/rest/user/',
             method: 'GET',
             statusCode:{
                 404: function () {
@@ -22,7 +22,7 @@ new Vue({
     methods:{
         deleteUser:function(id){
             $.ajax({
-                url: '/HelloSSM/rest/user/'+id,
+                url: '/ExamSys/rest/user/'+id,
                 method: 'DELETE',
                 statusCode:{
                     404: function () {
@@ -43,15 +43,41 @@ new Vue({
     el:"#userForm",
     data:{
         "id":"",
-        "userName":"zhaohongxuan",
+        "userName":"zhangsan",
         "password":"123456"
     },
     methods:{
+        toLogin:function () {
+            var param = {"id":this.id, "userName":this.userName,"password":this.password};
+            console.log(param);
+            $.ajax({
+                url: '/ExamSys/rest/user/login',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                dataType:"json",
+                data:JSON.stringify(param),
+                success: function (result) {
+                    if(result.errorCode != 0){
+                        toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+                        alert(result.errorMessage);
+                    }else {
+                        location.href= 'welcome';
+                    }
+
+                },
+                error: function (error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        },
         addUser:function(){
             var param = {"id":this.id, "userName":this.userName,"password":this.userName};
             console.log(param);
             $.ajax({
-                url: '/HelloSSM/rest/user/',
+                url: '/ExamSys/rest/user/',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'

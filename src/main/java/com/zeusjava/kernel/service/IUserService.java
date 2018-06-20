@@ -12,6 +12,14 @@ public interface IUserService {
 
    User getUserByUserName(String userName);
 
+   /**
+    * 根据用户名和密码查询用户信息
+    * @param userName
+    * @param password
+    * @return
+     */
+   User findUserByUserNameAndPwd(String userName, String password);
+
    List<User> getAllUser();
 
    Boolean addUser(User user);

@@ -16,5 +16,12 @@ public class UserController {
     public String getAllUsers(){
         return "userList";
     }
-
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String loginPage(){
+        return "login";
+    }
+    @RequestMapping(value = "/welcome",method = RequestMethod.GET)
+    public String welcomePage(){
+        return "welcome";
+    }
 }

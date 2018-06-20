@@ -26,6 +26,11 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
+    public User findUserByUserNameAndPwd(String userName, String password) {
+        return userMapper.findUserByUserNameAndPwd(userName, password);
+    }
+
+    @Override
     public List<User> getAllUser() {
         return userMapper.selectAllUser();
     }

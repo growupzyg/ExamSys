@@ -29,7 +29,7 @@ Fork项目Clone到本地
 ### 1.本地安装好mysql数据库，使用自带的`test`数据库，或者新建数据库
 
     jdbc.driverClassName=com.mysql.jdbc.Driver
-    jdbc.url=jdbc:mysql://localhost:3307/test
+    jdbc.url=jdbc:mysql://localhost:3306/test
     jdbc.username=root
     jdbc.password=root
 

@@ -4,6 +4,7 @@ package com.zeusjava.web.rest;
  * Created by LittleXuan on 2015/10/18.
  */
 
+import com.zeusjava.kernel.entity.Response;
 import com.zeusjava.kernel.entity.User;
 import com.zeusjava.kernel.service.IUserService;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,28 @@ public class UserRestController {
             userService.addUser(user);
             return new ResponseEntity<>(user,HttpStatus.CREATED);
         }
+    }
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping(value="/login", method= RequestMethod.POST)
+    public ResponseEntity<Response> toLogin(@RequestBody User user) {
+        User userExist = userService.getUserByUserName(user.getUserName());
+        Response response = new Response();
+        if (userExist == null) {
+            response.setErrorCode(-1);
+            response.setErrorMessage("用户不存在");
+        }else {
+            User correctUser = userService.findUserByUserNameAndPwd(user.getUserName(), user.getPassword());
+            if(correctUser == null){
+                response.setErrorCode(-1);
+                response.setErrorMessage("用户密码不正确");
+            }
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @RequestMapping(value="/{id}", method= RequestMethod.DELETE)

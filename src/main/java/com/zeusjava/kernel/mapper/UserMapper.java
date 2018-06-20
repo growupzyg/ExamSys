@@ -14,6 +14,8 @@ public interface UserMapper {
 
     User selectUserByName(@Param("userName") String userName);
 
+    User findUserByUserNameAndPwd(@Param("userName") String userName, @Param("password") String password);
+
     List<User> selectAllUser();
 
     int deleteByPrimaryKey(@Param("id") Integer id);

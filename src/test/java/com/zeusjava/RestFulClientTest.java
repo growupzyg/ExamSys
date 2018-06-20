@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by zhaohongxuan
  */
 public class RestFulClientTest {
-	public static final String REST_SERVICE_URI = "http://localhost:8081/HelloSSM/rest";
+	public static final String REST_SERVICE_URI = "http://localhost:8081/ExamSys/rest";
 
 	private static final int USER_ID_INSERT = 110; //插入的UserId
 	private static final int USER_ID_QUERY = 111; //查询的UserId
